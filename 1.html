@@ -1,219 +1,151 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hero — Ismail Aouini</title>
+  <title>Mes Projets — Ismail Aouini</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#efecec;
-      --text:#12131a;
-      --muted:#3b3f45;
-      --btn-radius:12px;
-      --max-width:1100px;
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
+      background: #efecec;
+      color: #12131a;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.2;
-      overflow-x:hidden;
+    h1 {
+      text-align: center;
+      font-family: "Poppins", sans-serif;
+      font-size: 3rem;
+      margin-top: 50px;
+      margin-bottom: 30px;
+      font-weight: 800;
     }
 
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      padding:4rem 1.5rem;
+    .projects-grid {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
     }
 
-    .hero__bg{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      overflow:hidden;
-      z-index:0;
+    .card {
+      background: #ffffffaa;
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      border: 2px solid rgba(0,0,0,0.1);
+      transition: 0.2s;
     }
 
-    .grain {
-      position:absolute;
-      inset:0;
-      z-index:3;
-      mix-blend-mode:normal;
-      opacity:0.06;
-      background-image: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
-      background-size: 3px 3px;
-      pointer-events:none;
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
     }
 
-    .hero__content{
-      width:100%;
-      max-width:var(--max-width);
-      margin:0 auto;
-      text-align:center;
-      z-index:5;
-      position:relative;
+    .card h2 {
+      font-family: "Poppins", sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
     }
 
-    .eyebrow{
-      font-weight:600;
-      letter-spacing:0.04em;
-      color:var(--muted);
-      margin-bottom: .75rem;
-      font-size:1rem;
+    .card p {
+      font-size: 1rem;
+      color: #3b3f45;
+      line-height: 1.45;
+      margin-bottom: 20px;
     }
 
-    h1{
-      font-family:"Poppins", sans-serif;
-      font-weight:800;
-      font-size: clamp(2rem, 6vw, 4.25rem);
-      line-height:1;
-      letter-spacing: -0.02em;
-      margin-bottom: .6rem;
-      color:var(--text);
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .sub{
-      font-size: clamp(1rem, 2.4vw, 1.6rem);
-      color:var(--muted);
-      margin-bottom:1.6rem;
-      font-weight:500;
+    .btn {
+      text-decoration: none;
+      background: #ffffff;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 2px solid rgba(0,0,0,0.45);
+      color: #12131a;
+      transition: 0.2s;
     }
 
-    .btns{
-      display:flex;
-      gap:1rem;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:1.25rem;
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: .85rem 1.6rem;
-      border-radius:var(--btn-radius);
-      text-decoration:none;
-      font-weight:600;
-      min-width:160px;
-      transition: all .18s ease;
-      border:2px solid rgba(0,0,0,0.65);
-      background:transparent;
-      color:var(--text);
-    }
-
-    .btn:hover{
-      transform:translateY(-4px);
-      box-shadow: 0 10px 30px rgba(10,10,10,0.08);
-    }
-
-    .btn.primary{
-      background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02));
-    }
-
-    .btn-outline{
-      border-radius:calc(var(--btn-radius) + 6px);
-      padding:calc(.85rem + 2px) calc(1.6rem + 2px);
-      box-shadow: inset 0 0 0 2px rgba(0,0,0,0.02);
-    }
-
-    @media (max-width:640px){
-      .btn{min-width:140px;padding:.7rem 1.1rem}
-      h1{font-size:2.25rem}
-    }
-
-    .bg-svg > svg { width:100%; height:100%; display:block; }
-    .blob{ filter: blur(38px); opacity:0.95; }
-    .blob--soft{ filter: blur(26px); opacity:0.9; }
-    .bg-layer{ position:absolute; inset:0; z-index:1; pointer-events:none; }
   </style>
 </head>
 
 <body>
 
-  <section class="hero" aria-label="Intro hero">
-    <div class="hero__bg">
-      <div class="bg-layer bg-svg" aria-hidden="true">
+<h1>Mes Projets</h1>
 
-        <!-- SVG BLOBS (unchanged) -->
-        <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="g1" x1="0" x2="1">
-              <stop offset="0" stop-color="#ffe07d"/>
-              <stop offset="1" stop-color="#ff9dbd"/>
-            </linearGradient>
-            <linearGradient id="g2" x1="0" x2="1">
-              <stop offset="0" stop-color="#7dfcbc"/>
-              <stop offset="1" stop-color="#6be0ff"/>
-            </linearGradient>
-            <linearGradient id="g3" x1="0" x2="1">
-              <stop offset="0" stop-color="#bda3ff"/>
-              <stop offset="1" stop-color="#ffb6c2"/>
-            </linearGradient>
-            <filter id="fBlur" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="40" result="b"/>
-              <feColorMatrix in="b" type="saturate" values="1.2" />
-            </filter>
-          </defs>
+<div class="projects-grid">
 
-          <g transform="translate(-120,520) scale(1.0)" opacity="0.98">
-            <path class="blob" d="M420 180c70-120 320-130 420-48s260 252 58 362-560 38-560-78 22-60 82-236z"
-              fill="url(#g3)" filter="url(#fBlur)"/>
-          </g>
+  <!-- PROJECT 1 -->
+  <div class="card">
+    <h2>Blue Purple Futuristic Modern 3D Tech Company</h2>
+    <p>Présentation du projet incluant le design futuriste et les technologies utilisées.</p>
 
-          <g transform="translate(-40,-60) scale(1.0)">
-            <path class="blob blob--soft" d="M180 50c110-90 260-20 340 20s108 120 168 188 120 90 160 150 50 170-80 140-280-260-380-230-170-170-156-488z"
-              fill="url(#g2)" filter="url(#fBlur)" opacity="0.95"/>
-          </g>
-
-          <g transform="translate(700,-40) scale(0.9)">
-            <path class="blob" d="M250 20c90-18 250 7 350 80s110 160 20 220-170 65-300 10-220-240-100-310z"
-              fill="url(#g1)" filter="url(#fBlur)"/>
-          </g>
-
-          <g transform="translate(1110,350) scale(0.9)">
-            <path class="blob blob--soft" d="M180 0c80 0 160 40 200 90s80 120 10 190-210 130-260 60 10-340 50-340z"
-              fill="url(#g2)" filter="url(#fBlur)" opacity="0.95"/>
-          </g>
-
-        </svg>
-
-      </div>
+    <div class="buttons">
+      <a href="assets/projet1.pdf" class="btn">📄 Télécharger le PDF</a>
     </div>
+  </div>
 
-    <div class="grain" aria-hidden="true"></div>
+  <!-- PROJECT 2 -->
+  <div class="card">
+    <h2>Dashboard Power BI – Liste d’attente patient</h2>
+    <p>Analyse des temps d’attente hospitaliers pour améliorer la gestion des ressources et la satisfaction patient.</p>
 
-    <div class="hero__content">
-      <div class="eyebrow">HEY, I'M <strong style="font-weight:800">ISMAIL AOUINI</strong></div>
-      <h1><span class="accent">BUT YOU CAN CALL ME SAMOO.</span></h1>
-      <div class="sub">I'm a Data Analyst</div>
-
-      <!-- ✅ CORRECT BUTTONS -->
-      <div class="btns">
-        <a class="btn btn-outline" href="#view" role="button">See my Projects</a>
-
-        <!-- 👉 THIS IS THE CORRECT DOWNLOAD BUTTON -->
-       <a href="cv.pdf" download="Ismail_Aouini_CV.pdf" class="btn primary btn-outline" role="button">
-
-           Download CV
-        </a>
-      </div>
-
+    <div class="buttons">
+      <a href="assets/dashboard.pbix" class="btn">📊 Télécharger le fichier Power BI</a>
     </div>
-  </section>
+  </div>
+
+  <!-- PROJECT 3 -->
+  <div class="card">
+    <h2>Application Django – Gestion d’agence de location</h2>
+    <p>Plateforme web complète pour gérer les réservations, véhicules et historiques clients.</p>
+
+    <div class="buttons">
+      <a href="assets/django_code.zip" class="btn">💻 Télécharger le code source</a>
+      <a href="assets/django_env.zip" class="btn">⚙ Télécharger l'environnement</a>
+    </div>
+  </div>
+
+  <!-- PROJECT 4 -->
+  <div class="card">
+    <h2>Notebook Python – Carte interactive d’Italie</h2>
+    <p>Exploration de données géographiques et visualisation interactive via Jupyter Notebook.</p>
+
+    <div class="buttons">
+      <a href="assets/notebook.ipynb" class="btn">🧠 Télécharger le notebook</a>
+    </div>
+  </div>
+
+  <!-- PROJECT 5 -->
+  <div class="card">
+    <h2>Rapport Génie Logiciel</h2>
+    <p>Étude détaillée sur la conception et la gestion de projets logiciels selon les méthodologies agiles.</p>
+
+    <div class="buttons">
+      <a href="assets/rapport.pdf" class="btn">📄 Télécharger le rapport</a>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>
-
